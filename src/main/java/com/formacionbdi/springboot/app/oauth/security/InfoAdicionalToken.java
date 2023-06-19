@@ -3,6 +3,7 @@ package com.formacionbdi.springboot.app.oauth.security;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
@@ -27,6 +28,7 @@ public class InfoAdicionalToken implements TokenEnhancer{
 		info.put("nombre", usuario.getNombre());
 		info.put("apellido", usuario.getApellido());
 		info.put("nombre", usuario.getEmail());
+		info.put("status", HttpStatus.SC_OK);
 		((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(info);
 		return accessToken;
 	}
